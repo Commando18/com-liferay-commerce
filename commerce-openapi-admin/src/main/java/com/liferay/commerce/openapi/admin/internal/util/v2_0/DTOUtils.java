@@ -16,6 +16,7 @@ package com.liferay.commerce.openapi.admin.internal.util.v2_0;
 
 import com.liferay.commerce.account.model.CommerceAccount;
 import com.liferay.commerce.account.model.CommerceAccountOrganizationRel;
+import com.liferay.commerce.account.model.CommerceAccountUserRel;
 import com.liferay.commerce.currency.model.CommerceCurrency;
 import com.liferay.commerce.model.CommerceCountry;
 import com.liferay.commerce.model.CommerceWarehouse;
@@ -23,6 +24,7 @@ import com.liferay.commerce.model.CommerceWarehouseItem;
 import com.liferay.commerce.openapi.admin.model.v2_0.AccountDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.AccountMemberDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.AccountOrganizationDTO;
+import com.liferay.commerce.openapi.admin.model.v2_0.AccountRoleDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.CountryDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.CurrencyDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.InventoryDTO;
@@ -46,7 +48,9 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.Group;
 import com.liferay.portal.kernel.model.Organization;
+import com.liferay.portal.kernel.model.Role;
 import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.model.UserGroupRole;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ArrayUtil;
 
@@ -99,6 +103,24 @@ public class DTOUtils {
 		Stream<AccountOrganizationDTO> stream = accountOrganizations.stream();
 
 		return stream.toArray(AccountOrganizationDTO[]::new);
+	}
+
+	public static AccountRoleDTO[] modelsToAccountRoleDTOArray(
+		List<UserGroupRole> userGroupRoles) {
+
+		if (userGroupRoles == null) {
+			return null;
+		}
+
+		List<AccountRoleDTO> accountRoles = new ArrayList<>();
+
+		for (UserGroupRole userGroupRole : userGroupRoles) {
+			accountRoles.add(modelToDTO(userGroupRole));
+		}
+
+		Stream<AccountRoleDTO> stream = accountRoles.stream();
+
+		return stream.toArray(AccountRoleDTO[]::new);
 	}
 
 	public static AccountDTO modelToDTO(CommerceAccount commerceAccount) {
@@ -428,15 +450,30 @@ public class DTOUtils {
 		return userDTO;
 	}
 
-	private static String _getAccountType(int type) {
-		if (type == 1) {
-			return "Personal";
-		}
-		else if (type == 2) {
-			return "Business";
+	public static AccountRoleDTO modelToDTO(UserGroupRole userGroupRole) {
+		AccountRoleDTO accountRoleDTO = new AccountRoleDTO();
+
+		if (userGroupRole == null) {
+			return accountRoleDTO;
 		}
 
-		return "Guest";
+		try {
+			Role role = userGroupRole.getRole();
+
+			accountRoleDTO.setDescription(
+				LanguageUtils.getLanguageIdMap(role.getDescriptionMap()));
+			accountRoleDTO.setName(role.getName());
+			accountRoleDTO.setRoleId(role.getRoleId());
+			accountRoleDTO.setTitle(
+				LanguageUtils.getLanguageIdMap(role.getTitleMap()));
+		}
+		catch (Exception e) {
+			_log.error("Cannot instantiate AccountRoleDTO ", e);
+
+			throw new RuntimeException(e);
+		}
+
+		return accountRoleDTO;
 	}
 
 	private DTOUtils() {
