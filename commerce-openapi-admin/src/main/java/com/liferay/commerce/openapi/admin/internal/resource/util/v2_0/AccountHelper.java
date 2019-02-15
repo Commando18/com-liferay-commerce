@@ -76,10 +76,10 @@ public class AccountHelper {
 	public CommerceAccount getAccountById(String id, Company company)
 		throws PortalException {
 
-		CommerceAccount commercePriceList = null;
+		CommerceAccount commerceAccount = null;
 
 		if (IdUtils.isLocalPK(id)) {
-			commercePriceList = _commerceAccountService.fetchCommerceAccount(
+			commerceAccount = _commerceAccountService.fetchCommerceAccount(
 				GetterUtil.getLong(id));
 		}
 		else {
@@ -88,17 +88,17 @@ public class AccountHelper {
 
 			String erc = IdUtils.getExternalReferenceCodeFromId(id);
 
-			commercePriceList =
+			commerceAccount =
 				_commerceAccountService.fetchByExternalReferenceCode(
 					company.getCompanyId(), erc);
 		}
 
-		if (commercePriceList == null) {
+		if (commerceAccount == null) {
 			throw new NoSuchAccountException(
 				"Unable to find Account with ID: " + id);
 		}
 
-		return commercePriceList;
+		return commerceAccount;
 	}
 
 	public CollectionDTO<AccountDTO> getAccounts(
