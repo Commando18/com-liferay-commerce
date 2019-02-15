@@ -16,8 +16,6 @@ package com.liferay.commerce.openapi.admin.model.v2_0;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-import com.liferay.commerce.openapi.core.annotation.Nullable;
-
 import javax.annotation.Generated;
 
 /**
@@ -27,7 +25,6 @@ import javax.annotation.Generated;
 @JacksonXmlRootElement(localName = "Region")
 public class RegionDTO {
 
-	@Nullable
 	public String getCode() {
 		return _code;
 	}
@@ -36,7 +33,6 @@ public class RegionDTO {
 		return _commerceCountryId;
 	}
 
-	@Nullable
 	public Long getId() {
 		return _id;
 	}
@@ -45,12 +41,10 @@ public class RegionDTO {
 		return _name;
 	}
 
-	@Nullable
 	public Double getPriority() {
 		return _priority;
 	}
 
-	@Nullable
 	public Boolean isActive() {
 		return _active;
 	}
@@ -79,20 +73,11 @@ public class RegionDTO {
 		_priority = priority;
 	}
 
-	@Nullable
 	private Boolean _active;
-
-	@Nullable
 	private String _code;
-
 	private Long _commerceCountryId;
-
-	@Nullable
 	private Long _id;
-
 	private String _name;
-
-	@Nullable
 	private Double _priority;
 
 }
