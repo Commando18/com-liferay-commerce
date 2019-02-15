@@ -17,12 +17,14 @@ package com.liferay.commerce.openapi.admin.internal.util.v2_0;
 import com.liferay.commerce.account.model.CommerceAccount;
 import com.liferay.commerce.currency.model.CommerceCurrency;
 import com.liferay.commerce.model.CommerceCountry;
+import com.liferay.commerce.model.CommerceOrderNote;
 import com.liferay.commerce.model.CommerceWarehouse;
 import com.liferay.commerce.model.CommerceWarehouseItem;
 import com.liferay.commerce.openapi.admin.model.v2_0.AccountDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.CountryDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.CurrencyDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.InventoryDTO;
+import com.liferay.commerce.openapi.admin.model.v2_0.OrderNoteDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.PriceEntryDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.PriceListDTO;
 import com.liferay.commerce.openapi.admin.model.v2_0.ProductDTO;
@@ -46,8 +48,13 @@ import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ArrayUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
 /**
  * @author Zoltán Takács
+ * @author Alessio Antonio Rendina
  */
 public class DTOUtils {
 
@@ -117,6 +124,24 @@ public class DTOUtils {
 		currencyDTO.setRoundingMode(commerceCurrency.getRoundingMode());
 
 		return currencyDTO;
+	}
+
+	public static OrderNoteDTO modelToDTO(CommerceOrderNote commerceOrderNote) {
+		OrderNoteDTO orderNoteDTO = new OrderNoteDTO();
+
+		if (commerceOrderNote == null) {
+			return orderNoteDTO;
+		}
+
+		orderNoteDTO.setAuthor(commerceOrderNote.getUserName());
+		orderNoteDTO.setCommerceOrderId(commerceOrderNote.getCommerceOrderId());
+		orderNoteDTO.setContent(commerceOrderNote.getContent());
+		orderNoteDTO.setExternalReferenceCode(
+			commerceOrderNote.getExternalReferenceCode());
+		orderNoteDTO.setId(commerceOrderNote.getCommerceOrderNoteId());
+		orderNoteDTO.setRestricted(commerceOrderNote.isRestricted());
+
+		return orderNoteDTO;
 	}
 
 	public static PriceEntryDTO modelToDTO(
