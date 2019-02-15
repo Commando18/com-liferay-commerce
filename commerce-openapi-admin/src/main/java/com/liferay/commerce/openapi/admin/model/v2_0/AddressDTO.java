@@ -16,8 +16,6 @@ package com.liferay.commerce.openapi.admin.model.v2_0;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-import com.liferay.commerce.openapi.core.annotation.Nullable;
-
 import javax.annotation.Generated;
 
 /**
@@ -35,27 +33,22 @@ public class AddressDTO {
 		return _commerceCountryId;
 	}
 
-	@Nullable
 	public Long getCommerceRegionId() {
 		return _commerceRegionId;
 	}
 
-	@Nullable
 	public String getDescription() {
 		return _description;
 	}
 
-	@Nullable
 	public Long getId() {
 		return _id;
 	}
 
-	@Nullable
 	public Double getLatitude() {
 		return _latitude;
 	}
 
-	@Nullable
 	public Double getLongitude() {
 		return _longitude;
 	}
@@ -64,7 +57,6 @@ public class AddressDTO {
 		return _name;
 	}
 
-	@Nullable
 	public String getPhoneNumber() {
 		return _phoneNumber;
 	}
@@ -73,27 +65,22 @@ public class AddressDTO {
 		return _street1;
 	}
 
-	@Nullable
 	public String getStreet2() {
 		return _street2;
 	}
 
-	@Nullable
 	public String getStreet3() {
 		return _street3;
 	}
 
-	@Nullable
 	public String getZip() {
 		return _zip;
 	}
 
-	@Nullable
 	public Boolean isDefaultBilling() {
 		return _defaultBilling;
 	}
 
-	@Nullable
 	public Boolean isDefaultShipping() {
 		return _defaultShipping;
 	}
@@ -160,42 +147,18 @@ public class AddressDTO {
 
 	private String _city;
 	private Long _commerceCountryId;
-
-	@Nullable
 	private Long _commerceRegionId;
-
-	@Nullable
 	private Boolean _defaultBilling;
-
-	@Nullable
 	private Boolean _defaultShipping;
-
-	@Nullable
 	private String _description;
-
-	@Nullable
 	private Long _id;
-
-	@Nullable
 	private Double _latitude;
-
-	@Nullable
 	private Double _longitude;
-
 	private String _name;
-
-	@Nullable
 	private String _phoneNumber;
-
 	private String _street1;
-
-	@Nullable
 	private String _street2;
-
-	@Nullable
 	private String _street3;
-
-	@Nullable
 	private String _zip;
 
 }
