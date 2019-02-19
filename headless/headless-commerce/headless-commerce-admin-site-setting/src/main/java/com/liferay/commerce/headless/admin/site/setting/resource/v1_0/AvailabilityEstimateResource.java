@@ -39,15 +39,6 @@ import javax.ws.rs.core.Response;
 @Path("/v1.0/availabilityEstimate")
 public interface AvailabilityEstimateResource {
 
-	@Consumes("application/*")
-	@Path("/")
-	@POST
-	@Produces("application/*")
-	public AvailabilityEstimateDTO addAvailabilityEstimate(
-			@QueryParam("groupId") Long groupId,
-			AvailabilityEstimateDTO availabilityEstimateDTO)
-		throws Exception;
-
 	@DELETE
 	@Path("/{id}")
 	public Response deleteAvailabilityEstimate(@PathParam("id") String id)
@@ -72,6 +63,15 @@ public interface AvailabilityEstimateResource {
 	@PUT
 	public Response updateAvailabilityEstimate(
 			@PathParam("id") String id,
+			AvailabilityEstimateDTO availabilityEstimateDTO)
+		throws Exception;
+
+	@Consumes("application/*")
+	@Path("/")
+	@POST
+	@Produces("application/*")
+	public AvailabilityEstimateDTO upsertAvailabilityEstimate(
+			@QueryParam("groupId") Long groupId,
 			AvailabilityEstimateDTO availabilityEstimateDTO)
 		throws Exception;
 
