@@ -48,7 +48,7 @@ public interface SkuResource {
 	@GET
 	@Path("/{id}/inventory")
 	@Produces({"application/json", "application/xml"})
-	public CollectionDTO<InventoryDTO> getInventorys(
+	public CollectionDTO<InventoryDTO> getInventories(
 			@PathParam("id") String id, @Context Pagination pagination)
 		throws Exception;
 
