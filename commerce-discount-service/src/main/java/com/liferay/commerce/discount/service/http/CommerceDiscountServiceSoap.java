@@ -108,6 +108,20 @@ public class CommerceDiscountServiceSoap {
 		}
 	}
 
+	public static com.liferay.commerce.discount.model.CommerceDiscountSoap fetchCommerceDiscount(
+		long commerceDiscountId) throws RemoteException {
+		try {
+			com.liferay.commerce.discount.model.CommerceDiscount returnValue = CommerceDiscountServiceUtil.fetchCommerceDiscount(commerceDiscountId);
+
+			return com.liferay.commerce.discount.model.CommerceDiscountSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	public static com.liferay.commerce.discount.model.CommerceDiscountSoap getCommerceDiscount(
 		long commerceDiscountId) throws RemoteException {
 		try {
@@ -156,11 +170,10 @@ public class CommerceDiscountServiceSoap {
 		}
 	}
 
-	public static int getCommerceDiscountsCount(long groupId, String couponCode)
+	public static int getCommerceDiscountsCount(long groupId)
 		throws RemoteException {
 		try {
-			int returnValue = CommerceDiscountServiceUtil.getCommerceDiscountsCount(groupId,
-					couponCode);
+			int returnValue = CommerceDiscountServiceUtil.getCommerceDiscountsCount(groupId);
 
 			return returnValue;
 		}
@@ -171,10 +184,11 @@ public class CommerceDiscountServiceSoap {
 		}
 	}
 
-	public static int getCommerceDiscountsCount(long groupId)
+	public static int getCommerceDiscountsCount(long groupId, String couponCode)
 		throws RemoteException {
 		try {
-			int returnValue = CommerceDiscountServiceUtil.getCommerceDiscountsCount(groupId);
+			int returnValue = CommerceDiscountServiceUtil.getCommerceDiscountsCount(groupId,
+					couponCode);
 
 			return returnValue;
 		}
