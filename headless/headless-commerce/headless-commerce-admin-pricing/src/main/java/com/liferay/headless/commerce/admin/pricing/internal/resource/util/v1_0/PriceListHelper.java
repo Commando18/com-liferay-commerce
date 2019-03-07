@@ -135,8 +135,7 @@ public class PriceListHelper {
 		).collect(
 			Collectors.collectingAndThen(
 				Collectors.toList(),
-				priceListDTOs ->
-					new CollectionDTO<>(priceListDTOs, totalItems))
+				priceListDTOs -> new CollectionDTO<>(priceListDTOs, totalItems))
 		);
 	}
 
