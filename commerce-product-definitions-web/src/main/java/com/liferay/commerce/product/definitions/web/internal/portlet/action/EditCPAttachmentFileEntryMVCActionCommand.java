@@ -19,7 +19,6 @@ import com.liferay.commerce.product.exception.NoSuchCPAttachmentFileEntryExcepti
 import com.liferay.commerce.product.model.CPAttachmentFileEntry;
 import com.liferay.commerce.product.model.CPDefinition;
 import com.liferay.commerce.product.service.CPAttachmentFileEntryService;
-import com.liferay.commerce.product.util.CPInstanceHelper;
 import com.liferay.commerce.product.util.DDMFormValuesHelper;
 import com.liferay.document.library.kernel.exception.NoSuchFileEntryException;
 import com.liferay.portal.kernel.portlet.PortletProvider;
@@ -252,9 +251,6 @@ public class EditCPAttachmentFileEntryMVCActionCommand
 
 	@Reference
 	private CPAttachmentFileEntryService _cpAttachmentFileEntryService;
-
-	@Reference
-	private CPInstanceHelper _cpInstanceHelper;
 
 	@Reference
 	private DDMFormValuesHelper _ddmFormValuesHelper;
