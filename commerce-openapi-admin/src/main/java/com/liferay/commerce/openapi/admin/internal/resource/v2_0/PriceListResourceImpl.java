@@ -18,7 +18,6 @@ import com.liferay.commerce.openapi.admin.internal.resource.util.v2_0.PriceListH
 import com.liferay.commerce.openapi.admin.model.v2_0.PriceListDTO;
 import com.liferay.commerce.openapi.admin.resource.v2_0.PriceListResource;
 import com.liferay.commerce.openapi.core.annotation.Status;
-import com.liferay.commerce.openapi.core.context.Language;
 import com.liferay.commerce.openapi.core.context.Pagination;
 import com.liferay.commerce.openapi.core.model.CollectionDTO;
 import com.liferay.oauth2.provider.scope.RequiresScope;
@@ -47,9 +46,7 @@ public class PriceListResourceImpl implements PriceListResource {
 
 	@Override
 	@RequiresScope("CommerceOpenApiAdmin.write")
-	public Response deletePriceList(String id, Language language)
-		throws Exception {
-
+	public Response deletePriceList(String id) throws Exception {
 		_priceListHelper.deletePriceList(id, _user, _company);
 
 		Response.ResponseBuilder responseBuilder = Response.noContent();
@@ -59,32 +56,29 @@ public class PriceListResourceImpl implements PriceListResource {
 
 	@Override
 	@RequiresScope("CommerceOpenApiAdmin.read")
-	public PriceListDTO getPriceList(String id, Long groupId, Language language)
-		throws Exception {
-
+	public PriceListDTO getPriceList(String id, Long groupId) throws Exception {
 		return _priceListHelper.getPriceList(
-			id, groupId, _user, language, _company);
+			id, groupId, _user, null, _company);
 	}
 
 	@Override
 	@RequiresScope("CommerceOpenApiAdmin.read")
 	public CollectionDTO<PriceListDTO> getPriceLists(
-			Long groupId, Language language, Pagination pagination)
+			Long groupId, Pagination pagination)
 		throws Exception {
 
 		return _priceListHelper.getPriceLists(
-			groupId, _user, language, _company, pagination);
+			groupId, _user, null, _company, pagination);
 	}
 
 	@Override
 	@RequiresScope("CommerceOpenApiAdmin.write")
 	public Response updatePriceList(
-			String id, Long groupId, PriceListDTO priceListDTO,
-			Language language)
+			String id, Long groupId, PriceListDTO priceListDTO)
 		throws Exception {
 
 		_priceListHelper.updatePriceList(
-			id, groupId, priceListDTO, _user, language, _company);
+			id, groupId, priceListDTO, _user, null, _company);
 
 		Response.ResponseBuilder responseBuilder = Response.noContent();
 
@@ -94,12 +88,11 @@ public class PriceListResourceImpl implements PriceListResource {
 	@Override
 	@RequiresScope("CommerceOpenApiAdmin.write")
 	@Status(Response.Status.CREATED)
-	public PriceListDTO upsertPriceList(
-			Long groupId, PriceListDTO priceListDTO, Language language)
+	public PriceListDTO upsertPriceList(Long groupId, PriceListDTO priceListDTO)
 		throws Exception {
 
 		return _priceListHelper.upsertPriceList(
-			groupId, priceListDTO, _user, language, _company);
+			groupId, priceListDTO, _user, null, _company);
 	}
 
 	@Context

@@ -64,7 +64,7 @@ public class UserSegmentResourceImpl implements UserSegmentResource {
 
 	@Override
 	@RequiresScope("HeadlessCommerceAdminSiteSetting.write")
-	public Response deleteUserSegmentCriterion(Long id, String criterionId)
+	public Response deleteUserSegmentCriterion(Long id, Long criterionId)
 		throws Exception {
 
 		_userSegmentCriterionHelper.deleteUserSegmentCriterion(criterionId);
@@ -93,7 +93,7 @@ public class UserSegmentResourceImpl implements UserSegmentResource {
 	@Override
 	@RequiresScope("HeadlessCommerceAdminSiteSetting.read")
 	public UserSegmentCriterionDTO getUserSegmentCriterion(
-			Long id, String criterionId)
+			Long id, Long criterionId)
 		throws Exception {
 
 		return _userSegmentCriterionHelper.getUserSegmentCriterionDTO(
@@ -133,7 +133,7 @@ public class UserSegmentResourceImpl implements UserSegmentResource {
 	@Override
 	@RequiresScope("HeadlessCommerceAdminSiteSetting.write")
 	public UserSegmentCriterionDTO updateUserSegmentCriterion(
-			Long id, String criterionId,
+			Long id, Long criterionId,
 			UserSegmentCriterionDTO userSegmentCriterionDTO)
 		throws Exception {
 
