@@ -41,17 +41,17 @@ public class CPRuleTypeExceptionMapper
 
 	@Override
 	public int getErrorCode() {
-		return RESTError.WAREHOUSE_NAME_ERROR.getErrorCode();
+		return RESTError.CATALOG_RULE_TYPE_ERROR.getErrorCode();
 	}
 
 	@Override
 	public String getErrorDescription() {
-		return RESTError.WAREHOUSE_NAME_ERROR.getErrorDescription();
+		return RESTError.CATALOG_RULE_TYPE_ERROR.getErrorDescription();
 	}
 
 	@Override
 	public Response.Status getStatus() {
-		return RESTError.WAREHOUSE_NAME_ERROR.getStatus();
+		return RESTError.CATALOG_RULE_TYPE_ERROR.getStatus();
 	}
 
 }
