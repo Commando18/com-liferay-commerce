@@ -57,6 +57,9 @@ public class ProductConfiguration {
 		try {
 			allowBackOrder = allowBackOrderUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -82,6 +85,9 @@ public class ProductConfiguration {
 		try {
 			allowedOrderQuantities = allowedOrderQuantitiesUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -106,6 +112,9 @@ public class ProductConfiguration {
 		try {
 			displayAvailability = displayAvailabilityUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -129,6 +138,9 @@ public class ProductConfiguration {
 
 		try {
 			displayStockQuantity = displayStockQuantityUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -157,6 +169,9 @@ public class ProductConfiguration {
 		try {
 			inventoryEngine = inventoryEngineUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -184,6 +199,9 @@ public class ProductConfiguration {
 		try {
 			lowStockAction = lowStockActionUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -207,6 +225,9 @@ public class ProductConfiguration {
 
 		try {
 			maxOrderQuantity = maxOrderQuantityUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -232,6 +253,9 @@ public class ProductConfiguration {
 		try {
 			minOrderQuantity = minOrderQuantityUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -255,6 +279,9 @@ public class ProductConfiguration {
 
 		try {
 			minStockQuantity = minStockQuantityUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -280,6 +307,9 @@ public class ProductConfiguration {
 
 		try {
 			multipleOrderQuantity = multipleOrderQuantityUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -320,7 +350,13 @@ public class ProductConfiguration {
 
 		sb.append("\"allowBackOrder\": ");
 
-		sb.append(allowBackOrder);
+		if (allowBackOrder == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(allowBackOrder);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"allowedOrderQuantities\": ");
@@ -346,46 +382,93 @@ public class ProductConfiguration {
 
 		sb.append("\"displayAvailability\": ");
 
-		sb.append(displayAvailability);
+		if (displayAvailability == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(displayAvailability);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"displayStockQuantity\": ");
 
-		sb.append(displayStockQuantity);
+		if (displayStockQuantity == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(displayStockQuantity);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"inventoryEngine\": ");
 
-		sb.append("\"");
-		sb.append(inventoryEngine);
-		sb.append("\"");
+		if (inventoryEngine == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(inventoryEngine);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"lowStockAction\": ");
 
-		sb.append("\"");
-		sb.append(lowStockAction);
-		sb.append("\"");
+		if (lowStockAction == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(lowStockAction);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"maxOrderQuantity\": ");
 
-		sb.append(maxOrderQuantity);
+		if (maxOrderQuantity == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(maxOrderQuantity);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"minOrderQuantity\": ");
 
-		sb.append(minOrderQuantity);
+		if (minOrderQuantity == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(minOrderQuantity);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"minStockQuantity\": ");
 
-		sb.append(minStockQuantity);
+		if (minStockQuantity == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(minStockQuantity);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"multipleOrderQuantity\": ");
 
-		sb.append(multipleOrderQuantity);
+		if (multipleOrderQuantity == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(multipleOrderQuantity);
+		}
 
 		sb.append("}");
 

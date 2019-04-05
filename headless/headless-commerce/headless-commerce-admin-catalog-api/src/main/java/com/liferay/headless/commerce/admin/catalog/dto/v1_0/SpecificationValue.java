@@ -24,6 +24,8 @@ import com.liferay.petra.string.StringBundler;
 import graphql.annotations.annotationTypes.GraphQLField;
 import graphql.annotations.annotationTypes.GraphQLName;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.Map;
 import java.util.Objects;
 
@@ -40,6 +42,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Generated("")
 @GraphQLName("SpecificationValue")
 @JsonFilter("Liferay.Vulcan")
+@Schema(requiredProperties = {"value"})
 @XmlRootElement(name = "SpecificationValue")
 public class SpecificationValue {
 
@@ -55,6 +58,9 @@ public class SpecificationValue {
 	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
 		try {
 			id = idUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -81,6 +87,9 @@ public class SpecificationValue {
 		try {
 			optionCategory = optionCategoryUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -104,6 +113,9 @@ public class SpecificationValue {
 
 		try {
 			priority = priorityUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -129,6 +141,9 @@ public class SpecificationValue {
 		try {
 			product = productUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -153,6 +168,9 @@ public class SpecificationValue {
 		try {
 			specification = specificationUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -176,6 +194,9 @@ public class SpecificationValue {
 
 		try {
 			value = valueUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -216,32 +237,67 @@ public class SpecificationValue {
 
 		sb.append("\"id\": ");
 
-		sb.append(id);
+		if (id == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(id);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"optionCategory\": ");
 
-		sb.append(optionCategory);
+		if (optionCategory == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(optionCategory);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"priority\": ");
 
-		sb.append(priority);
+		if (priority == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(priority);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"product\": ");
 
-		sb.append(product);
+		if (product == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(product);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"specification\": ");
 
-		sb.append(specification);
+		if (specification == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(specification);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"value\": ");
 
-		sb.append(value);
+		if (value == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(value);
+		}
 
 		sb.append("}");
 

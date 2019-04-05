@@ -41,27 +41,26 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @generated
  */
 @Generated("")
-@GraphQLName("Specification")
+@GraphQLName("OptionValue")
 @JsonFilter("Liferay.Vulcan")
-@Schema(requiredProperties = {"key", "title"})
-@XmlRootElement(name = "Specification")
-public class Specification {
+@Schema(requiredProperties = {"key", "name"})
+@XmlRootElement(name = "OptionValue")
+public class OptionValue {
 
-	public Map<String, String> getDescription() {
-		return description;
+	public String getExternalReferenceCode() {
+		return externalReferenceCode;
 	}
 
-	public void setDescription(Map<String, String> description) {
-		this.description = description;
+	public void setExternalReferenceCode(String externalReferenceCode) {
+		this.externalReferenceCode = externalReferenceCode;
 	}
 
 	@JsonIgnore
-	public void setDescription(
-		UnsafeSupplier<Map<String, String>, Exception>
-			descriptionUnsafeSupplier) {
+	public void setExternalReferenceCode(
+		UnsafeSupplier<String, Exception> externalReferenceCodeUnsafeSupplier) {
 
 		try {
-			description = descriptionUnsafeSupplier.get();
+			externalReferenceCode = externalReferenceCodeUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -73,34 +72,7 @@ public class Specification {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Map<String, String> description;
-
-	public Boolean getFacetable() {
-		return facetable;
-	}
-
-	public void setFacetable(Boolean facetable) {
-		this.facetable = facetable;
-	}
-
-	@JsonIgnore
-	public void setFacetable(
-		UnsafeSupplier<Boolean, Exception> facetableUnsafeSupplier) {
-
-		try {
-			facetable = facetableUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Boolean facetable;
+	protected String externalReferenceCode;
 
 	public Long getId() {
 		return id;
@@ -153,48 +125,20 @@ public class Specification {
 	@NotEmpty
 	protected String key;
 
-	public OptionCategory getOptionCategory() {
-		return optionCategory;
+	public Map<String, String> getName() {
+		return name;
 	}
 
-	public void setOptionCategory(OptionCategory optionCategory) {
-		this.optionCategory = optionCategory;
-	}
-
-	@JsonIgnore
-	public void setOptionCategory(
-		UnsafeSupplier<OptionCategory, Exception>
-			optionCategoryUnsafeSupplier) {
-
-		try {
-			optionCategory = optionCategoryUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected OptionCategory optionCategory;
-
-	public Map<String, String> getTitle() {
-		return title;
-	}
-
-	public void setTitle(Map<String, String> title) {
-		this.title = title;
+	public void setName(Map<String, String> name) {
+		this.name = name;
 	}
 
 	@JsonIgnore
-	public void setTitle(
-		UnsafeSupplier<Map<String, String>, Exception> titleUnsafeSupplier) {
+	public void setName(
+		UnsafeSupplier<Map<String, String>, Exception> nameUnsafeSupplier) {
 
 		try {
-			title = titleUnsafeSupplier.get();
+			name = nameUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -207,22 +151,22 @@ public class Specification {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	@NotNull
-	protected Map<String, String> title;
+	protected Map<String, String> name;
 
-	public SpecificationValue[] getValues() {
-		return values;
+	public Double getPriority() {
+		return priority;
 	}
 
-	public void setValues(SpecificationValue[] values) {
-		this.values = values;
+	public void setPriority(Double priority) {
+		this.priority = priority;
 	}
 
 	@JsonIgnore
-	public void setValues(
-		UnsafeSupplier<SpecificationValue[], Exception> valuesUnsafeSupplier) {
+	public void setPriority(
+		UnsafeSupplier<Double, Exception> priorityUnsafeSupplier) {
 
 		try {
-			values = valuesUnsafeSupplier.get();
+			priority = priorityUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -234,7 +178,7 @@ public class Specification {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected SpecificationValue[] values;
+	protected Double priority;
 
 	@Override
 	public boolean equals(Object object) {
@@ -242,13 +186,13 @@ public class Specification {
 			return true;
 		}
 
-		if (!(object instanceof Specification)) {
+		if (!(object instanceof OptionValue)) {
 			return false;
 		}
 
-		Specification specification = (Specification)object;
+		OptionValue optionValue = (OptionValue)object;
 
-		return Objects.equals(toString(), specification.toString());
+		return Objects.equals(toString(), optionValue.toString());
 	}
 
 	@Override
@@ -263,24 +207,15 @@ public class Specification {
 
 		sb.append("{");
 
-		sb.append("\"description\": ");
+		sb.append("\"externalReferenceCode\": ");
 
-		if (description == null) {
+		if (externalReferenceCode == null) {
 			sb.append("null");
 		}
 		else {
-			sb.append(description);
-		}
-
-		sb.append(", ");
-
-		sb.append("\"facetable\": ");
-
-		if (facetable == null) {
-			sb.append("null");
-		}
-		else {
-			sb.append(facetable);
+			sb.append("\"");
+			sb.append(externalReferenceCode);
+			sb.append("\"");
 		}
 
 		sb.append(", ");
@@ -309,45 +244,24 @@ public class Specification {
 
 		sb.append(", ");
 
-		sb.append("\"optionCategory\": ");
+		sb.append("\"name\": ");
 
-		if (optionCategory == null) {
+		if (name == null) {
 			sb.append("null");
 		}
 		else {
-			sb.append(optionCategory);
+			sb.append(name);
 		}
 
 		sb.append(", ");
 
-		sb.append("\"title\": ");
+		sb.append("\"priority\": ");
 
-		if (title == null) {
+		if (priority == null) {
 			sb.append("null");
 		}
 		else {
-			sb.append(title);
-		}
-
-		sb.append(", ");
-
-		sb.append("\"values\": ");
-
-		if (values == null) {
-			sb.append("null");
-		}
-		else {
-			sb.append("[");
-
-			for (int i = 0; i < values.length; i++) {
-				sb.append(values[i]);
-
-				if ((i + 1) < values.length) {
-					sb.append(", ");
-				}
-			}
-
-			sb.append("]");
+			sb.append(priority);
 		}
 
 		sb.append("}");

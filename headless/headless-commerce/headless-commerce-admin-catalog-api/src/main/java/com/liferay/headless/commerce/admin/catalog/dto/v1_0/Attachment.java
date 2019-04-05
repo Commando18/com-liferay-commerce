@@ -32,8 +32,6 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 
-import javax.validation.constraints.NotEmpty;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -43,6 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Generated("")
 @GraphQLName("Attachment")
 @JsonFilter("Liferay.Vulcan")
+@Schema(requiredProperties = {"sku"})
 @XmlRootElement(name = "Attachment")
 public class Attachment {
 
@@ -61,6 +60,9 @@ public class Attachment {
 
 		try {
 			attachment = attachmentUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -86,6 +88,9 @@ public class Attachment {
 		try {
 			displayDate = displayDateUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -109,6 +114,9 @@ public class Attachment {
 
 		try {
 			expirationDate = expirationDateUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -134,6 +142,9 @@ public class Attachment {
 		try {
 			externalReferenceCode = externalReferenceCodeUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -141,7 +152,6 @@ public class Attachment {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	@NotEmpty
 	protected String externalReferenceCode;
 
 	public Long getId() {
@@ -156,6 +166,9 @@ public class Attachment {
 	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
 		try {
 			id = idUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -181,6 +194,9 @@ public class Attachment {
 		try {
 			neverExpire = neverExpireUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -204,6 +220,9 @@ public class Attachment {
 
 		try {
 			options = optionsUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -229,6 +248,9 @@ public class Attachment {
 		try {
 			priority = priorityUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -251,6 +273,9 @@ public class Attachment {
 	public void setSrc(UnsafeSupplier<String, Exception> srcUnsafeSupplier) {
 		try {
 			src = srcUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -276,6 +301,9 @@ public class Attachment {
 		try {
 			title = titleUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -297,6 +325,9 @@ public class Attachment {
 	public void setType(UnsafeSupplier<Integer, Exception> typeUnsafeSupplier) {
 		try {
 			type = typeUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -336,67 +367,132 @@ public class Attachment {
 
 		sb.append("\"attachment\": ");
 
-		sb.append("\"");
-		sb.append(attachment);
-		sb.append("\"");
+		if (attachment == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(attachment);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"displayDate\": ");
 
-		sb.append("\"");
-		sb.append(displayDate);
-		sb.append("\"");
+		if (displayDate == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(displayDate);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"expirationDate\": ");
 
-		sb.append("\"");
-		sb.append(expirationDate);
-		sb.append("\"");
+		if (expirationDate == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(expirationDate);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"externalReferenceCode\": ");
 
-		sb.append("\"");
-		sb.append(externalReferenceCode);
-		sb.append("\"");
+		if (externalReferenceCode == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(externalReferenceCode);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"id\": ");
 
-		sb.append(id);
+		if (id == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(id);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"neverExpire\": ");
 
-		sb.append(neverExpire);
+		if (neverExpire == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(neverExpire);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"options\": ");
 
-		sb.append(options);
+		if (options == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(options);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"priority\": ");
 
-		sb.append(priority);
+		if (priority == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(priority);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"src\": ");
 
-		sb.append("\"");
-		sb.append(src);
-		sb.append("\"");
+		if (src == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(src);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"title\": ");
 
-		sb.append(title);
+		if (title == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(title);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"type\": ");
 
-		sb.append(type);
+		if (type == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(type);
+		}
 
 		sb.append("}");
 

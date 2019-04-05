@@ -43,11 +43,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @generated
  */
 @Generated("")
-@GraphQLName("ProductOption")
+@GraphQLName("Option")
 @JsonFilter("Liferay.Vulcan")
 @Schema(requiredProperties = {"fieldType", "key", "name", "optionId"})
-@XmlRootElement(name = "ProductOption")
-public class ProductOption {
+@XmlRootElement(name = "Option")
+public class Option {
 
 	public static enum FieldType {
 
@@ -110,6 +110,33 @@ public class ProductOption {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Map<String, String> description;
+
+	public String getExternalReferenceCode() {
+		return externalReferenceCode;
+	}
+
+	public void setExternalReferenceCode(String externalReferenceCode) {
+		this.externalReferenceCode = externalReferenceCode;
+	}
+
+	@JsonIgnore
+	public void setExternalReferenceCode(
+		UnsafeSupplier<String, Exception> externalReferenceCodeUnsafeSupplier) {
+
+		try {
+			externalReferenceCode = externalReferenceCodeUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected String externalReferenceCode;
 
 	public Boolean getFacetable() {
 		return facetable;
@@ -254,34 +281,6 @@ public class ProductOption {
 	@NotNull
 	protected Map<String, String> name;
 
-	public Long getOptionId() {
-		return optionId;
-	}
-
-	public void setOptionId(Long optionId) {
-		this.optionId = optionId;
-	}
-
-	@JsonIgnore
-	public void setOptionId(
-		UnsafeSupplier<Long, Exception> optionIdUnsafeSupplier) {
-
-		try {
-			optionId = optionIdUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	@NotNull
-	protected Long optionId;
-
 	public Double getPriority() {
 		return priority;
 	}
@@ -390,17 +389,17 @@ public class ProductOption {
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Boolean skuContributor;
 
-	public ProductOptionValue[] getValues() {
+	public OptionValue[] getValues() {
 		return values;
 	}
 
-	public void setValues(ProductOptionValue[] values) {
+	public void setValues(OptionValue[] values) {
 		this.values = values;
 	}
 
 	@JsonIgnore
 	public void setValues(
-		UnsafeSupplier<ProductOptionValue[], Exception> valuesUnsafeSupplier) {
+		UnsafeSupplier<OptionValue[], Exception> valuesUnsafeSupplier) {
 
 		try {
 			values = valuesUnsafeSupplier.get();
@@ -415,7 +414,7 @@ public class ProductOption {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected ProductOptionValue[] values;
+	protected OptionValue[] values;
 
 	@Override
 	public boolean equals(Object object) {
@@ -423,13 +422,13 @@ public class ProductOption {
 			return true;
 		}
 
-		if (!(object instanceof ProductOption)) {
+		if (!(object instanceof Option)) {
 			return false;
 		}
 
-		ProductOption productOption = (ProductOption)object;
+		Option option = (Option)object;
 
-		return Objects.equals(toString(), productOption.toString());
+		return Objects.equals(toString(), option.toString());
 	}
 
 	@Override
@@ -451,6 +450,19 @@ public class ProductOption {
 		}
 		else {
 			sb.append(description);
+		}
+
+		sb.append(", ");
+
+		sb.append("\"externalReferenceCode\": ");
+
+		if (externalReferenceCode == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(externalReferenceCode);
+			sb.append("\"");
 		}
 
 		sb.append(", ");
@@ -510,17 +522,6 @@ public class ProductOption {
 		}
 		else {
 			sb.append(name);
-		}
-
-		sb.append(", ");
-
-		sb.append("\"optionId\": ");
-
-		if (optionId == null) {
-			sb.append("null");
-		}
-		else {
-			sb.append(optionId);
 		}
 
 		sb.append(", ");

@@ -14,8 +14,8 @@
 
 package com.liferay.headless.commerce.admin.catalog.internal.resource.v1_0;
 
-import com.liferay.headless.commerce.admin.catalog.dto.v1_0.OptionCategory;
-import com.liferay.headless.commerce.admin.catalog.resource.v1_0.OptionCategoryResource;
+import com.liferay.headless.commerce.admin.catalog.dto.v1_0.SpecificationValue;
+import com.liferay.headless.commerce.admin.catalog.resource.v1_0.SpecificationValueResource;
 import com.liferay.petra.function.UnsafeFunction;
 import com.liferay.portal.kernel.model.Company;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
@@ -38,15 +38,12 @@ import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
@@ -55,47 +52,8 @@ import javax.ws.rs.core.UriInfo;
  */
 @Generated("")
 @Path("/v1.0")
-public abstract class BaseOptionCategoryResourceImpl
-	implements OptionCategoryResource {
-
-	@Override
-	@DELETE
-	@Path("/optionCategories/{id}")
-	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public Response deleteOptionCategory(@NotNull @PathParam("id") Long id)
-		throws Exception {
-
-		Response.ResponseBuilder responseBuilder = Response.ok();
-
-		return responseBuilder.build();
-	}
-
-	@Override
-	@GET
-	@Path("/optionCategories/{id}")
-	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public OptionCategory getOptionCategory(@NotNull @PathParam("id") Long id)
-		throws Exception {
-
-		return new OptionCategory();
-	}
-
-	@Override
-	@Consumes({"application/json", "application/xml"})
-	@PATCH
-	@Path("/optionCategories/{id}")
-	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public Response patchOptionCategory(
-			@NotNull @PathParam("id") Long id, OptionCategory optionCategory)
-		throws Exception {
-
-		Response.ResponseBuilder responseBuilder = Response.ok();
-
-		return responseBuilder.build();
-	}
+public abstract class BaseSpecificationValueResourceImpl
+	implements SpecificationValueResource {
 
 	@Override
 	@GET
@@ -105,12 +63,11 @@ public abstract class BaseOptionCategoryResourceImpl
 			@Parameter(in = ParameterIn.QUERY, name = "pageSize")
 		}
 	)
-	@Path("/catalogs/{siteId}/optionCategories/")
+	@Path("/specifications/{id}/specificationValues/")
 	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public Page<OptionCategory> getCatalogSiteOptionCategoriesPage(
-			@NotNull @PathParam("siteId") Long siteId,
-			@Context Pagination pagination)
+	@Tags(value = {@Tag(name = "SpecificationValue")})
+	public Page<SpecificationValue> getSpecificationIdSpecificationValuesPage(
+			@NotNull @PathParam("id") Long id, @Context Pagination pagination)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());
@@ -119,15 +76,15 @@ public abstract class BaseOptionCategoryResourceImpl
 	@Override
 	@Consumes({"application/json", "application/xml"})
 	@POST
-	@Path("/catalogs/{siteId}/optionCategory/")
+	@Path("/specifications/{id}/specificationValue/")
 	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public OptionCategory postCatalogSiteOptionCategory(
-			@NotNull @PathParam("siteId") Long siteId,
-			OptionCategory optionCategory)
+	@Tags(value = {@Tag(name = "SpecificationValue")})
+	public SpecificationValue postSpecificationIdSpecificationValue(
+			@NotNull @PathParam("id") Long id,
+			SpecificationValue specificationValue)
 		throws Exception {
 
-		return new OptionCategory();
+		return new SpecificationValue();
 	}
 
 	public void setContextCompany(Company contextCompany) {
@@ -135,7 +92,8 @@ public abstract class BaseOptionCategoryResourceImpl
 	}
 
 	protected void preparePatch(
-		OptionCategory optionCategory, OptionCategory existingOptionCategory) {
+		SpecificationValue specificationValue,
+		SpecificationValue existingSpecificationValue) {
 	}
 
 	protected <T, R> List<R> transform(

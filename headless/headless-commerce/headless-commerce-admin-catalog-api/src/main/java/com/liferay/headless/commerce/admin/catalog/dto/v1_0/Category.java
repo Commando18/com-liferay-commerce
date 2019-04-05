@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Generated("")
 @GraphQLName("Category")
 @JsonFilter("Liferay.Vulcan")
+@Schema(requiredProperties = {"name"})
 @XmlRootElement(name = "Category")
 public class Category {
 
@@ -59,6 +60,9 @@ public class Category {
 		try {
 			externalReferenceCode = externalReferenceCodeUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -66,32 +70,7 @@ public class Category {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	@NotEmpty
 	protected String externalReferenceCode;
-
-	public Long getGroupId() {
-		return groupId;
-	}
-
-	public void setGroupId(Long groupId) {
-		this.groupId = groupId;
-	}
-
-	@JsonIgnore
-	public void setGroupId(
-		UnsafeSupplier<Long, Exception> groupIdUnsafeSupplier) {
-
-		try {
-			groupId = groupIdUnsafeSupplier.get();
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long groupId;
 
 	public Long getId() {
 		return id;
@@ -105,6 +84,9 @@ public class Category {
 	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
 		try {
 			id = idUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -129,6 +111,9 @@ public class Category {
 		try {
 			name = nameUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -138,6 +123,33 @@ public class Category {
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	@NotEmpty
 	protected String name;
+
+	public Long getSiteId() {
+		return siteId;
+	}
+
+	public void setSiteId(Long siteId) {
+		this.siteId = siteId;
+	}
+
+	@JsonIgnore
+	public void setSiteId(
+		UnsafeSupplier<Long, Exception> siteIdUnsafeSupplier) {
+
+		try {
+			siteId = siteIdUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Long siteId;
 
 	public String getVocabulary() {
 		return vocabulary;
@@ -153,6 +165,9 @@ public class Category {
 
 		try {
 			vocabulary = vocabularyUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -192,33 +207,62 @@ public class Category {
 
 		sb.append("\"externalReferenceCode\": ");
 
-		sb.append("\"");
-		sb.append(externalReferenceCode);
-		sb.append("\"");
-		sb.append(", ");
+		if (externalReferenceCode == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(externalReferenceCode);
+			sb.append("\"");
+		}
 
-		sb.append("\"groupId\": ");
-
-		sb.append(groupId);
 		sb.append(", ");
 
 		sb.append("\"id\": ");
 
-		sb.append(id);
+		if (id == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(id);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"name\": ");
 
-		sb.append("\"");
-		sb.append(name);
-		sb.append("\"");
+		if (name == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(name);
+			sb.append("\"");
+		}
+
+		sb.append(", ");
+
+		sb.append("\"siteId\": ");
+
+		if (siteId == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(siteId);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"vocabulary\": ");
 
-		sb.append("\"");
-		sb.append(vocabulary);
-		sb.append("\"");
+		if (vocabulary == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(vocabulary);
+			sb.append("\"");
+		}
 
 		sb.append("}");
 

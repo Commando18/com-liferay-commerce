@@ -14,23 +14,17 @@
 
 package com.liferay.headless.commerce.admin.catalog.internal.resource.v1_0;
 
-import com.liferay.headless.commerce.admin.catalog.dto.v1_0.OptionCategory;
-import com.liferay.headless.commerce.admin.catalog.resource.v1_0.OptionCategoryResource;
+import com.liferay.headless.commerce.admin.catalog.dto.v1_0.ProductSubscriptionConfiguration;
+import com.liferay.headless.commerce.admin.catalog.resource.v1_0.ProductSubscriptionConfigurationResource;
 import com.liferay.petra.function.UnsafeFunction;
 import com.liferay.portal.kernel.model.Company;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
-import com.liferay.portal.vulcan.pagination.Page;
-import com.liferay.portal.vulcan.pagination.Pagination;
 import com.liferay.portal.vulcan.util.TransformUtil;
 
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -38,10 +32,8 @@ import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -55,41 +47,31 @@ import javax.ws.rs.core.UriInfo;
  */
 @Generated("")
 @Path("/v1.0")
-public abstract class BaseOptionCategoryResourceImpl
-	implements OptionCategoryResource {
-
-	@Override
-	@DELETE
-	@Path("/optionCategories/{id}")
-	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public Response deleteOptionCategory(@NotNull @PathParam("id") Long id)
-		throws Exception {
-
-		Response.ResponseBuilder responseBuilder = Response.ok();
-
-		return responseBuilder.build();
-	}
+public abstract class BaseProductSubscriptionConfigurationResourceImpl
+	implements ProductSubscriptionConfigurationResource {
 
 	@Override
 	@GET
-	@Path("/optionCategories/{id}")
+	@Path("/products/{id}/subscriptionConfiguration/")
 	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public OptionCategory getOptionCategory(@NotNull @PathParam("id") Long id)
+	@Tags(value = {@Tag(name = "ProductSubscriptionConfiguration")})
+	public ProductSubscriptionConfiguration
+			getProductIdSubscriptionConfiguration(
+				@NotNull @PathParam("id") Long id)
 		throws Exception {
 
-		return new OptionCategory();
+		return new ProductSubscriptionConfiguration();
 	}
 
 	@Override
-	@Consumes({"application/json", "application/xml"})
+	@Consumes("application/json")
 	@PATCH
-	@Path("/optionCategories/{id}")
+	@Path("/products/{id}/subscriptionConfiguration/")
 	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public Response patchOptionCategory(
-			@NotNull @PathParam("id") Long id, OptionCategory optionCategory)
+	@Tags(value = {@Tag(name = "ProductSubscriptionConfiguration")})
+	public Response patchProductIdSubscriptionConfiguration(
+			@NotNull @PathParam("id") Long id,
+			ProductSubscriptionConfiguration productSubscriptionConfiguration)
 		throws Exception {
 
 		Response.ResponseBuilder responseBuilder = Response.ok();
@@ -99,35 +81,39 @@ public abstract class BaseOptionCategoryResourceImpl
 
 	@Override
 	@GET
-	@Parameters(
-		value = {
-			@Parameter(in = ParameterIn.QUERY, name = "page"),
-			@Parameter(in = ParameterIn.QUERY, name = "pageSize")
-		}
+	@Path(
+		"/products/by-externalReferenceCode/{externalReferenceCode}/subscriptionConfiguration/"
 	)
-	@Path("/catalogs/{siteId}/optionCategories/")
 	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public Page<OptionCategory> getCatalogSiteOptionCategoriesPage(
-			@NotNull @PathParam("siteId") Long siteId,
-			@Context Pagination pagination)
+	@Tags(value = {@Tag(name = "ProductSubscriptionConfiguration")})
+	public ProductSubscriptionConfiguration
+			getProductByExternalReferenceCodeSubscriptionConfiguration(
+				@NotNull @PathParam("externalReferenceCode") String
+					externalReferenceCode)
 		throws Exception {
 
-		return Page.of(Collections.emptyList());
+		return new ProductSubscriptionConfiguration();
 	}
 
 	@Override
-	@Consumes({"application/json", "application/xml"})
-	@POST
-	@Path("/catalogs/{siteId}/optionCategory/")
+	@Consumes("application/json")
+	@PATCH
+	@Path(
+		"/products/by-externalReferenceCode/{externalReferenceCode}/subscriptionConfiguration/"
+	)
 	@Produces({"application/json", "application/xml"})
-	@Tags(value = {@Tag(name = "OptionCategory")})
-	public OptionCategory postCatalogSiteOptionCategory(
-			@NotNull @PathParam("siteId") Long siteId,
-			OptionCategory optionCategory)
+	@Tags(value = {@Tag(name = "ProductSubscriptionConfiguration")})
+	public Response
+			patchProductByExternalReferenceCodeSubscriptionConfiguration(
+				@NotNull @PathParam("externalReferenceCode") String
+					externalReferenceCode,
+				ProductSubscriptionConfiguration
+					productSubscriptionConfiguration)
 		throws Exception {
 
-		return new OptionCategory();
+		Response.ResponseBuilder responseBuilder = Response.ok();
+
+		return responseBuilder.build();
 	}
 
 	public void setContextCompany(Company contextCompany) {
@@ -135,7 +121,9 @@ public abstract class BaseOptionCategoryResourceImpl
 	}
 
 	protected void preparePatch(
-		OptionCategory optionCategory, OptionCategory existingOptionCategory) {
+		ProductSubscriptionConfiguration productSubscriptionConfiguration,
+		ProductSubscriptionConfiguration
+			existingProductSubscriptionConfiguration) {
 	}
 
 	protected <T, R> List<R> transform(

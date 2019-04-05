@@ -24,11 +24,15 @@ import com.liferay.petra.string.StringBundler;
 import graphql.annotations.annotationTypes.GraphQLField;
 import graphql.annotations.annotationTypes.GraphQLName;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+import java.util.Map;
 import java.util.Objects;
 
 import javax.annotation.Generated;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -39,33 +43,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Generated("")
 @GraphQLName("ProductOptionValue")
 @JsonFilter("Liferay.Vulcan")
+@Schema(requiredProperties = {"key", "name"})
 @XmlRootElement(name = "ProductOptionValue")
 public class ProductOptionValue {
-
-	public String getExternalReferenceCode() {
-		return externalReferenceCode;
-	}
-
-	public void setExternalReferenceCode(String externalReferenceCode) {
-		this.externalReferenceCode = externalReferenceCode;
-	}
-
-	@JsonIgnore
-	public void setExternalReferenceCode(
-		UnsafeSupplier<String, Exception> externalReferenceCodeUnsafeSupplier) {
-
-		try {
-			externalReferenceCode = externalReferenceCodeUnsafeSupplier.get();
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	@NotEmpty
-	protected String externalReferenceCode;
 
 	public Long getId() {
 		return id;
@@ -79,6 +59,9 @@ public class ProductOptionValue {
 	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
 		try {
 			id = idUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -102,6 +85,9 @@ public class ProductOptionValue {
 		try {
 			key = keyUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -112,18 +98,23 @@ public class ProductOptionValue {
 	@NotEmpty
 	protected String key;
 
-	public String getName() {
+	public Map<String, String> getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(Map<String, String> name) {
 		this.name = name;
 	}
 
 	@JsonIgnore
-	public void setName(UnsafeSupplier<String, Exception> nameUnsafeSupplier) {
+	public void setName(
+		UnsafeSupplier<Map<String, String>, Exception> nameUnsafeSupplier) {
+
 		try {
 			name = nameUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -132,8 +123,8 @@ public class ProductOptionValue {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	@NotEmpty
-	protected String name;
+	@NotNull
+	protected Map<String, String> name;
 
 	public Double getPriority() {
 		return priority;
@@ -149,6 +140,9 @@ public class ProductOptionValue {
 
 		try {
 			priority = priorityUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -186,35 +180,49 @@ public class ProductOptionValue {
 
 		sb.append("{");
 
-		sb.append("\"externalReferenceCode\": ");
-
-		sb.append("\"");
-		sb.append(externalReferenceCode);
-		sb.append("\"");
-		sb.append(", ");
-
 		sb.append("\"id\": ");
 
-		sb.append(id);
+		if (id == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(id);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"key\": ");
 
-		sb.append("\"");
-		sb.append(key);
-		sb.append("\"");
+		if (key == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(key);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"name\": ");
 
-		sb.append("\"");
-		sb.append(name);
-		sb.append("\"");
+		if (name == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(name);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"priority\": ");
 
-		sb.append(priority);
+		if (priority == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(priority);
+		}
 
 		sb.append("}");
 

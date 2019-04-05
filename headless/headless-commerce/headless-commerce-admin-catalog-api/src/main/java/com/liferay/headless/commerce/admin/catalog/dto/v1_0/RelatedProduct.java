@@ -26,7 +26,6 @@ import graphql.annotations.annotationTypes.GraphQLName;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.util.Map;
 import java.util.Objects;
 
 import javax.annotation.Generated;
@@ -41,39 +40,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @generated
  */
 @Generated("")
-@GraphQLName("OptionCategory")
+@GraphQLName("RelatedProduct")
 @JsonFilter("Liferay.Vulcan")
-@Schema(requiredProperties = {"key", "title"})
-@XmlRootElement(name = "OptionCategory")
-public class OptionCategory {
-
-	public Map<String, String> getDescription() {
-		return description;
-	}
-
-	public void setDescription(Map<String, String> description) {
-		this.description = description;
-	}
-
-	@JsonIgnore
-	public void setDescription(
-		UnsafeSupplier<Map<String, String>, Exception>
-			descriptionUnsafeSupplier) {
-
-		try {
-			description = descriptionUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Map<String, String> description;
+@Schema(requiredProperties = {"productId", "type"})
+@XmlRootElement(name = "RelatedProduct")
+public class RelatedProduct {
 
 	public Long getId() {
 		return id;
@@ -97,34 +68,8 @@ public class OptionCategory {
 	}
 
 	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	protected Long id;
-
-	public String getKey() {
-		return key;
-	}
-
-	public void setKey(String key) {
-		this.key = key;
-	}
-
-	@JsonIgnore
-	public void setKey(UnsafeSupplier<String, Exception> keyUnsafeSupplier) {
-		try {
-			key = keyUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	@NotEmpty
-	protected String key;
 
 	public Double getPriority() {
 		return priority;
@@ -153,20 +98,20 @@ public class OptionCategory {
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Double priority;
 
-	public Map<String, String> getTitle() {
-		return title;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setTitle(Map<String, String> title) {
-		this.title = title;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	@JsonIgnore
-	public void setTitle(
-		UnsafeSupplier<Map<String, String>, Exception> titleUnsafeSupplier) {
+	public void setProduct(
+		UnsafeSupplier<Product, Exception> productUnsafeSupplier) {
 
 		try {
-			title = titleUnsafeSupplier.get();
+			product = productUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -178,8 +123,61 @@ public class OptionCategory {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Product product;
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	@JsonIgnore
+	public void setProductId(
+		UnsafeSupplier<Long, Exception> productIdUnsafeSupplier) {
+
+		try {
+			productId = productIdUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@NotNull
-	protected Map<String, String> title;
+	protected Long productId;
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@JsonIgnore
+	public void setType(UnsafeSupplier<String, Exception> typeUnsafeSupplier) {
+		try {
+			type = typeUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	@NotEmpty
+	protected String type;
 
 	@Override
 	public boolean equals(Object object) {
@@ -187,13 +185,13 @@ public class OptionCategory {
 			return true;
 		}
 
-		if (!(object instanceof OptionCategory)) {
+		if (!(object instanceof RelatedProduct)) {
 			return false;
 		}
 
-		OptionCategory optionCategory = (OptionCategory)object;
+		RelatedProduct relatedProduct = (RelatedProduct)object;
 
-		return Objects.equals(toString(), optionCategory.toString());
+		return Objects.equals(toString(), relatedProduct.toString());
 	}
 
 	@Override
@@ -208,17 +206,6 @@ public class OptionCategory {
 
 		sb.append("{");
 
-		sb.append("\"description\": ");
-
-		if (description == null) {
-			sb.append("null");
-		}
-		else {
-			sb.append(description);
-		}
-
-		sb.append(", ");
-
 		sb.append("\"id\": ");
 
 		if (id == null) {
@@ -226,19 +213,6 @@ public class OptionCategory {
 		}
 		else {
 			sb.append(id);
-		}
-
-		sb.append(", ");
-
-		sb.append("\"key\": ");
-
-		if (key == null) {
-			sb.append("null");
-		}
-		else {
-			sb.append("\"");
-			sb.append(key);
-			sb.append("\"");
 		}
 
 		sb.append(", ");
@@ -254,13 +228,37 @@ public class OptionCategory {
 
 		sb.append(", ");
 
-		sb.append("\"title\": ");
+		sb.append("\"product\": ");
 
-		if (title == null) {
+		if (product == null) {
 			sb.append("null");
 		}
 		else {
-			sb.append(title);
+			sb.append(product);
+		}
+
+		sb.append(", ");
+
+		sb.append("\"productId\": ");
+
+		if (productId == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(productId);
+		}
+
+		sb.append(", ");
+
+		sb.append("\"type\": ");
+
+		if (type == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(type);
+			sb.append("\"");
 		}
 
 		sb.append("}");

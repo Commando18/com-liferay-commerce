@@ -45,7 +45,7 @@ public class ProductSubscriptionConfiguration {
 
 	public static enum SubscriptionType {
 
-		DAY("day"), MONTH("month"), WEEK("week"), YEAR("year");
+		DAY("day"), WEEK("week"), MONTH("month"), YEAR("year");
 
 		@JsonCreator
 		public static SubscriptionType create(String value) {
@@ -91,6 +91,9 @@ public class ProductSubscriptionConfiguration {
 		try {
 			enable = enableUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -115,6 +118,9 @@ public class ProductSubscriptionConfiguration {
 		try {
 			length = lengthUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -138,6 +144,9 @@ public class ProductSubscriptionConfiguration {
 
 		try {
 			numberOfLength = numberOfLengthUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -173,6 +182,9 @@ public class ProductSubscriptionConfiguration {
 		try {
 			subscriptionType = subscriptionTypeUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -200,6 +212,9 @@ public class ProductSubscriptionConfiguration {
 		try {
 			subscriptionTypeSettings =
 				subscriptionTypeSettingsUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -241,29 +256,58 @@ public class ProductSubscriptionConfiguration {
 
 		sb.append("\"enable\": ");
 
-		sb.append(enable);
+		if (enable == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(enable);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"length\": ");
 
-		sb.append(length);
+		if (length == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(length);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"numberOfLength\": ");
 
-		sb.append(numberOfLength);
+		if (numberOfLength == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(numberOfLength);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"subscriptionType\": ");
 
-		sb.append("\"");
-		sb.append(subscriptionType);
-		sb.append("\"");
+		if (subscriptionType == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(subscriptionType);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"subscriptionTypeSettings\": ");
 
-		sb.append(subscriptionTypeSettings);
+		if (subscriptionTypeSettings == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(subscriptionTypeSettings);
+		}
 
 		sb.append("}");
 

@@ -24,6 +24,8 @@ import com.liferay.petra.string.StringBundler;
 import graphql.annotations.annotationTypes.GraphQLField;
 import graphql.annotations.annotationTypes.GraphQLName;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.math.BigDecimal;
 
 import java.util.Date;
@@ -43,6 +45,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Generated("")
 @GraphQLName("Sku")
 @JsonFilter("Liferay.Vulcan")
+@Schema(requiredProperties = {"sku"})
 @XmlRootElement(name = "Sku")
 public class Sku {
 
@@ -60,6 +63,9 @@ public class Sku {
 
 		try {
 			cost = costUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -85,6 +91,9 @@ public class Sku {
 		try {
 			depth = depthUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -108,6 +117,9 @@ public class Sku {
 
 		try {
 			displayDate = displayDateUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -133,6 +145,9 @@ public class Sku {
 		try {
 			expirationDate = expirationDateUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -157,6 +172,9 @@ public class Sku {
 		try {
 			externalReferenceCode = externalReferenceCodeUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -164,7 +182,6 @@ public class Sku {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	@NotEmpty
 	protected String externalReferenceCode;
 
 	public String getGtin() {
@@ -179,6 +196,9 @@ public class Sku {
 	public void setGtin(UnsafeSupplier<String, Exception> gtinUnsafeSupplier) {
 		try {
 			gtin = gtinUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -204,6 +224,9 @@ public class Sku {
 		try {
 			height = heightUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -225,6 +248,9 @@ public class Sku {
 	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
 		try {
 			id = idUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -249,6 +275,9 @@ public class Sku {
 
 		try {
 			inventoryLevel = inventoryLevelUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -275,6 +304,9 @@ public class Sku {
 		try {
 			manufacturerPartNumber = manufacturerPartNumberUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -298,6 +330,9 @@ public class Sku {
 
 		try {
 			neverExpire = neverExpireUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -323,6 +358,9 @@ public class Sku {
 		try {
 			options = optionsUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -346,6 +384,9 @@ public class Sku {
 
 		try {
 			price = priceUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -371,6 +412,9 @@ public class Sku {
 		try {
 			productId = productIdUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -394,6 +438,9 @@ public class Sku {
 
 		try {
 			promoPrice = promoPriceUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -419,6 +466,9 @@ public class Sku {
 		try {
 			published = publishedUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -443,6 +493,9 @@ public class Sku {
 		try {
 			purchasable = purchasableUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -464,6 +517,9 @@ public class Sku {
 	public void setSku(UnsafeSupplier<String, Exception> skuUnsafeSupplier) {
 		try {
 			sku = skuUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -490,6 +546,9 @@ public class Sku {
 		try {
 			weight = weightUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -513,6 +572,9 @@ public class Sku {
 
 		try {
 			width = widthUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -552,114 +614,233 @@ public class Sku {
 
 		sb.append("\"cost\": ");
 
-		sb.append(cost);
+		if (cost == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(cost);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"depth\": ");
 
-		sb.append(depth);
+		if (depth == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(depth);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"displayDate\": ");
 
-		sb.append("\"");
-		sb.append(displayDate);
-		sb.append("\"");
+		if (displayDate == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(displayDate);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"expirationDate\": ");
 
-		sb.append("\"");
-		sb.append(expirationDate);
-		sb.append("\"");
+		if (expirationDate == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(expirationDate);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"externalReferenceCode\": ");
 
-		sb.append("\"");
-		sb.append(externalReferenceCode);
-		sb.append("\"");
+		if (externalReferenceCode == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(externalReferenceCode);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"gtin\": ");
 
-		sb.append("\"");
-		sb.append(gtin);
-		sb.append("\"");
+		if (gtin == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(gtin);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"height\": ");
 
-		sb.append(height);
+		if (height == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(height);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"id\": ");
 
-		sb.append(id);
+		if (id == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(id);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"inventoryLevel\": ");
 
-		sb.append(inventoryLevel);
+		if (inventoryLevel == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(inventoryLevel);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"manufacturerPartNumber\": ");
 
-		sb.append("\"");
-		sb.append(manufacturerPartNumber);
-		sb.append("\"");
+		if (manufacturerPartNumber == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(manufacturerPartNumber);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"neverExpire\": ");
 
-		sb.append(neverExpire);
+		if (neverExpire == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(neverExpire);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"options\": ");
 
-		sb.append(options);
+		if (options == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(options);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"price\": ");
 
-		sb.append(price);
+		if (price == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(price);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"productId\": ");
 
-		sb.append(productId);
+		if (productId == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(productId);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"promoPrice\": ");
 
-		sb.append(promoPrice);
+		if (promoPrice == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(promoPrice);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"published\": ");
 
-		sb.append(published);
+		if (published == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(published);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"purchasable\": ");
 
-		sb.append(purchasable);
+		if (purchasable == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(purchasable);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"sku\": ");
 
-		sb.append("\"");
-		sb.append(sku);
-		sb.append("\"");
+		if (sku == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(sku);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"weight\": ");
 
-		sb.append(weight);
+		if (weight == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(weight);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"width\": ");
 
-		sb.append(width);
+		if (width == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(width);
+		}
 
 		sb.append("}");
 

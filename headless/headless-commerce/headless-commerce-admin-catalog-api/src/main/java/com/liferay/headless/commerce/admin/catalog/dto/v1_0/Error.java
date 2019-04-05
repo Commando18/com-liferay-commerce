@@ -42,6 +42,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Generated("")
 @GraphQLName("Error")
 @JsonFilter("Liferay.Vulcan")
+@Schema(
+	requiredProperties = {"errorCode", "errorDescription", "message", "status"}
+)
 @XmlRootElement(name = "Error")
 public class Error {
 
@@ -60,6 +63,9 @@ public class Error {
 
 		try {
 			errorCode = errorCodeUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -86,6 +92,9 @@ public class Error {
 		try {
 			errorDescription = errorDescriptionUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -110,6 +119,9 @@ public class Error {
 
 		try {
 			message = messageUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -136,6 +148,9 @@ public class Error {
 
 		try {
 			status = statusUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -176,26 +191,49 @@ public class Error {
 
 		sb.append("\"errorCode\": ");
 
-		sb.append(errorCode);
+		if (errorCode == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(errorCode);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"errorDescription\": ");
 
-		sb.append("\"");
-		sb.append(errorDescription);
-		sb.append("\"");
+		if (errorDescription == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(errorDescription);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"message\": ");
 
-		sb.append("\"");
-		sb.append(message);
-		sb.append("\"");
+		if (message == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(message);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"status\": ");
 
-		sb.append(status);
+		if (status == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(status);
+		}
 
 		sb.append("}");
 

@@ -53,6 +53,9 @@ public class ProductTaxConfiguration {
 		try {
 			id = idUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -77,6 +80,9 @@ public class ProductTaxConfiguration {
 		try {
 			taxCategory = taxCategoryUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -100,6 +106,9 @@ public class ProductTaxConfiguration {
 
 		try {
 			taxable = taxableUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -140,19 +149,36 @@ public class ProductTaxConfiguration {
 
 		sb.append("\"id\": ");
 
-		sb.append(id);
+		if (id == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(id);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"taxCategory\": ");
 
-		sb.append("\"");
-		sb.append(taxCategory);
-		sb.append("\"");
+		if (taxCategory == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append("\"");
+			sb.append(taxCategory);
+			sb.append("\"");
+		}
+
 		sb.append(", ");
 
 		sb.append("\"taxable\": ");
 
-		sb.append(taxable);
+		if (taxable == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(taxable);
+		}
 
 		sb.append("}");
 

@@ -57,6 +57,9 @@ public class ProductShippingConfiguration {
 		try {
 			depth = depthUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -80,6 +83,9 @@ public class ProductShippingConfiguration {
 
 		try {
 			freeShipping = freeShippingUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -105,6 +111,9 @@ public class ProductShippingConfiguration {
 		try {
 			height = heightUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -128,6 +137,9 @@ public class ProductShippingConfiguration {
 
 		try {
 			shippable = shippableUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -154,6 +166,9 @@ public class ProductShippingConfiguration {
 		try {
 			shippingExtraPrice = shippingExtraPriceUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -177,6 +192,9 @@ public class ProductShippingConfiguration {
 
 		try {
 			shippingSeparately = shippingSeparatelyUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -202,6 +220,9 @@ public class ProductShippingConfiguration {
 		try {
 			weight = weightUnsafeSupplier.get();
 		}
+		catch (RuntimeException re) {
+			throw re;
+		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -225,6 +246,9 @@ public class ProductShippingConfiguration {
 
 		try {
 			width = widthUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -266,42 +290,89 @@ public class ProductShippingConfiguration {
 
 		sb.append("\"depth\": ");
 
-		sb.append(depth);
+		if (depth == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(depth);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"freeShipping\": ");
 
-		sb.append(freeShipping);
+		if (freeShipping == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(freeShipping);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"height\": ");
 
-		sb.append(height);
+		if (height == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(height);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"shippable\": ");
 
-		sb.append(shippable);
+		if (shippable == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(shippable);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"shippingExtraPrice\": ");
 
-		sb.append(shippingExtraPrice);
+		if (shippingExtraPrice == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(shippingExtraPrice);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"shippingSeparately\": ");
 
-		sb.append(shippingSeparately);
+		if (shippingSeparately == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(shippingSeparately);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"weight\": ");
 
-		sb.append(weight);
+		if (weight == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(weight);
+		}
+
 		sb.append(", ");
 
 		sb.append("\"width\": ");
 
-		sb.append(width);
+		if (width == null) {
+			sb.append("null");
+		}
+		else {
+			sb.append(width);
+		}
 
 		sb.append("}");
 
