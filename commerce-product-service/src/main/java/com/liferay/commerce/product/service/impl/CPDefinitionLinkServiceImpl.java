@@ -114,6 +114,17 @@ public class CPDefinitionLinkServiceImpl
 	}
 
 	@Override
+	public List<CPDefinitionLink> getCPDefinitionLinks(long cpDefinitionId)
+		throws PortalException {
+
+		_cpDefinitionModelResourcePermission.check(
+			getPermissionChecker(), cpDefinitionId, ActionKeys.VIEW);
+
+		return cpDefinitionLinkLocalService.getCPDefinitionLinks(
+			cpDefinitionId);
+	}
+
+	@Override
 	public List<CPDefinitionLink> getCPDefinitionLinks(
 			long cpDefinitionId, int start, int end)
 		throws PortalException {
