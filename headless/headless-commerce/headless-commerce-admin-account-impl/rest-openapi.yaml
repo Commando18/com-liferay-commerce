@@ -62,30 +62,10 @@ components:
         Account:
             properties:
                 addresses:
-                    example:
-                        - city: Diamond Bar
-                          commerceCountryId: 30130
-                          commerceRegionId: 30234
-                          defaultBilling: true
-                          defaultShipping: true
-                          description: right stairs, first room on the left
-                          id: 31130
-                          latitude: 33.9976884
-                          longitude: -117.8144595
-                          name: Alessio Antonio Rendina
-                          phoneNumber: (123) 456 7890
-                          street1: 1400 Montefino Ave
-                          street2: 1st floor
-                          street3: suite 200
-                          zip: "91765"
                     items:
                         $ref: '#/components/schemas/Address'
                     type: array
                 emailAddresses:
-                    example:
-                        - joe.1@commerce.com
-                        - joe.2@commerce.com
-                        - joe.3@commerce.com
                     items:
                         format: email
                         type: string
@@ -107,11 +87,6 @@ components:
                     example: Account Name
                     type: string
                 organizations:
-                    example:
-                        - id: 20546
-                          name: Liferay Italy
-                          organizationId: 20433
-                          treePath: /Liferay/Liferay Italy
                     items:
                         $ref: '#/components/schemas/AccountOrganization'
                     type: array
@@ -128,21 +103,6 @@ components:
                     minimum: 0
                     type: integer
                 users:
-                    example:
-                        - id: 31256
-                          name: Alessio Antonio Rendina
-                          roles:
-                              - description:
-                                    en_US: Account Administrator Description US
-                                    hr_HR: Account Administrator Description HR
-                                    hu_HU: Account Administrator Description HU
-                                id: 30021
-                                name: Account Administrator
-                                title:
-                                    en_US: Account Administrator US
-                                    hr_HR: Account Administrator HR
-                                    hu_HU: Account Administrator HU
-                          userId: 30002
                     items:
                         $ref: '#/components/schemas/AccountMember'
                     type: array
@@ -161,27 +121,6 @@ components:
                     example: User Name
                     type: string
                 roles:
-                    example:
-                        - description:
-                              en_US: Account Administrator Description US
-                              hr_HR: Account Administrator Description HR
-                              hu_HU: Account Administrator Description HU
-                          id: 30021
-                          name: Account Administrator
-                          title:
-                              en_US: Account Administrator US
-                              hr_HR: Account Administrator HR
-                              hu_HU: Account Administrator HU
-                        - description:
-                              en_US: Order Manager Description US
-                              hr_HR: Order Manager Description HR
-                              hu_HU: Order Manager Description HU
-                          id: 30023
-                          name: Order Manager
-                          title:
-                              en_US: Order Manager US
-                              hr_HR: Order Manager HR
-                              hu_HU: Order Manager HU
                     items:
                         $ref: '#/components/schemas/AccountRole'
                     type: array
