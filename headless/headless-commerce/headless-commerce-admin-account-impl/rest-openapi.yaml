@@ -1,0 +1,1690 @@
+components:
+    parameters:
+        externalReferenceCodePathParam:
+            explode: false
+            in: path
+            name: externalReferenceCode
+            required: true
+            schema:
+                description: The resource external reference code
+                example: AB-34098-789-N
+                minLength: 1
+                type: string
+            style: simple
+        idPathParam:
+            explode: false
+            in: path
+            name: id
+            required: true
+            schema:
+                description: The resource Id
+                example: 30130
+                format: int64
+                minimum: 0
+                type: integer
+            style: simple
+        pageQueryParam:
+            explode: true
+            in: query
+            name: page
+            required: false
+            schema:
+                type: integer
+            style: form
+        pageSizeQueryParam:
+            explode: true
+            in: query
+            name: pageSize
+            required: false
+            schema:
+                type: integer
+            style: form
+    responses:
+        NotFound:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/Error'
+                application/xml:
+                    schema:
+                        $ref: '#/components/schemas/Error'
+            description: The specified resource was not found
+        UnauthorizedError:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/Error'
+                application/xml:
+                    schema:
+                        $ref: '#/components/schemas/Error'
+            description: Authentication information is missing or invalid
+    schemas:
+        Account:
+            properties:
+                addresses:
+                    example:
+                        - city: Diamond Bar
+                          commerceCountryId: 30130
+                          commerceRegionId: 30234
+                          defaultBilling: true
+                          defaultShipping: true
+                          description: right stairs, first room on the left
+                          id: 31130
+                          latitude: 33.9976884
+                          longitude: -117.8144595
+                          name: Alessio Antonio Rendina
+                          phoneNumber: (123) 456 7890
+                          street1: 1400 Montefino Ave
+                          street2: 1st floor
+                          street3: suite 200
+                          zip: "91765"
+                    items:
+                        $ref: '#/components/schemas/Address'
+                    type: array
+                emailAddresses:
+                    example:
+                        - joe.1@commerce.com
+                        - joe.2@commerce.com
+                        - joe.3@commerce.com
+                    items:
+                        format: email
+                        type: string
+                    type: array
+                externalReferenceCode:
+                    example: AB-34098-789-N
+                    type: string
+                id:
+                    example: 30130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                logoId:
+                    example: 20078
+                    format: int64
+                    minimum: 0
+                    type: integer
+                name:
+                    example: Account Name
+                    type: string
+                organizations:
+                    example:
+                        - id: 20546
+                          name: Liferay Italy
+                          organizationId: 20433
+                          treePath: /Liferay/Liferay Italy
+                    items:
+                        $ref: '#/components/schemas/AccountOrganization'
+                    type: array
+                root:
+                    example: true
+                    type: boolean
+                taxId:
+                    example: Abcd1234
+                    type: string
+                type:
+                    example: 1
+                    format: int32
+                    maximum: 2
+                    minimum: 0
+                    type: integer
+                users:
+                    example:
+                        - id: 31256
+                          name: Alessio Antonio Rendina
+                          roles:
+                              - description:
+                                    en_US: Account Administrator Description US
+                                    hr_HR: Account Administrator Description HR
+                                    hu_HU: Account Administrator Description HU
+                                id: 30021
+                                name: Account Administrator
+                                title:
+                                    en_US: Account Administrator US
+                                    hr_HR: Account Administrator HR
+                                    hu_HU: Account Administrator HU
+                          userId: 30002
+                    items:
+                        $ref: '#/components/schemas/AccountMember'
+                    type: array
+            required:
+                - externalReferenceCode
+                - name
+            type: object
+        AccountMember:
+            properties:
+                commerceAccountId:
+                    example: 30130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                name:
+                    example: User Name
+                    type: string
+                roles:
+                    example:
+                        - description:
+                              en_US: Account Administrator Description US
+                              hr_HR: Account Administrator Description HR
+                              hu_HU: Account Administrator Description HU
+                          id: 30021
+                          name: Account Administrator
+                          title:
+                              en_US: Account Administrator US
+                              hr_HR: Account Administrator HR
+                              hu_HU: Account Administrator HU
+                        - description:
+                              en_US: Order Manager Description US
+                              hr_HR: Order Manager Description HR
+                              hu_HU: Order Manager Description HU
+                          id: 30023
+                          name: Order Manager
+                          title:
+                              en_US: Order Manager US
+                              hr_HR: Order Manager HR
+                              hu_HU: Order Manager HU
+                    items:
+                        $ref: '#/components/schemas/AccountRole'
+                    type: array
+                userId:
+                    example: 30002
+                    format: int64
+                    minimum: 0
+                    type: integer
+            required:
+                - commerceAccountId
+                - userId
+            type: object
+        AccountOrganization:
+            properties:
+                commerceAccountId:
+                    example: 30130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                name:
+                    example: Organization Name
+                    type: string
+                organizationId:
+                    example: 30002
+                    format: int64
+                    minimum: 0
+                    type: integer
+                treePath:
+                    example: /Parent Organization/Organization Name
+                    type: string
+            required:
+                - commerceAccountId
+                - organizationId
+            type: object
+        AccountRole:
+            properties:
+                description:
+                    additionalProperties:
+                        type: string
+                    example:
+                        en_US: Role Description US
+                        hr_HR: Role Description HR
+                        hu_HU: Role Description HU
+                    type: object
+                name:
+                    example: Role Name
+                    type: string
+                roleId:
+                    example: 30130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                title:
+                    additionalProperties:
+                        type: string
+                    example:
+                        en_US: Role Title US
+                        hr_HR: Role Title HR
+                        hu_HU: Role Title HU
+                    type: object
+            required:
+                - name
+            type: object
+        Address:
+            properties:
+                city:
+                    example: Diamond Bar
+                    type: string
+                commerceCountryId:
+                    example: 30130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                commerceRegionId:
+                    example: 30234
+                    format: int64
+                    minimum: 0
+                    type: integer
+                defaultBilling:
+                    example: true
+                    type: boolean
+                defaultShipping:
+                    example: true
+                    type: boolean
+                description:
+                    example: right stairs, first room on the left
+                    type: string
+                id:
+                    example: 31130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                latitude:
+                    example: 33.9976884
+                    format: double
+                    type: number
+                longitude:
+                    example: -117.8144595
+                    format: double
+                    type: number
+                name:
+                    example: Alessio Antonio Rendina
+                    type: string
+                phoneNumber:
+                    example: (123) 456 7890
+                    type: string
+                street1:
+                    example: 1400 Montefino Ave
+                    type: string
+                street2:
+                    example: 1st floor
+                    type: string
+                street3:
+                    example: suite 200
+                    type: string
+                zip:
+                    example: "91765"
+                    type: string
+            required:
+                - city
+                - commerceCountryId
+                - name
+                - street1
+            type: object
+        Error:
+            properties:
+                errorCode:
+                    description: Internal error code mapping
+                    example: 996
+                    readOnly: true
+                    type: integer
+                errorDescription:
+                    example: Unable to find currency. Currency code should be expressed with
+                        3-letter ISO 4217 format.
+                    readOnly: true
+                    type: string
+                message:
+                    example: No CommerceCurrency exists with the key {groupId=41811, code=US
+                        Dollar}
+                    readOnly: true
+                    type: string
+                status:
+                    description: HTTP Status code
+                    example: 404
+                    readOnly: true
+                    type: integer
+            required:
+                - errorCode
+                - errorDescription
+                - message
+                - status
+            type: object
+        Order:
+            properties:
+                advanceStatus:
+                    example: trasmitted
+                    type: string
+                billingAddress:
+                    $ref: '#/components/schemas/Address'
+                billingAddressId:
+                    example: 31130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                commerceAccountId:
+                    example: 30130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                currency:
+                    example: USD
+                    type: string
+                externalReferenceCode:
+                    example: AB-34098-789-N
+                    type: string
+                id:
+                    example: 30130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                orderStatus:
+                    example: 0
+                    format: int32
+                    minimum: 0
+                    type: integer
+                paymentMethod:
+                    example: paypal
+                    type: string
+                paymentStatus:
+                    example: 0
+                    format: int32
+                    minimum: 0
+                    type: integer
+                purchaseOrderNumber:
+                    example: Abcd1234
+                    type: string
+                shippingAddress:
+                    $ref: '#/components/schemas/Address'
+                shippingAddressId:
+                    example: 31130
+                    format: int64
+                    minimum: 0
+                    type: integer
+                shippingAmount:
+                    example: 12
+                    format: bigdecimal
+                    minimum: 0
+                    type: number
+                shippingMethod:
+                    example: fixed
+                    type: string
+                shippingOption:
+                    example: by Air
+                    type: string
+                siteId:
+                    example: 29473
+                    format: int64
+                    minimum: 0
+                    type: integer
+                subtotal:
+                    example: 101
+                    format: bigdecimal
+                    minimum: 0
+                    type: number
+                total:
+                    example: 113
+                    format: bigdecimal
+                    minimum: 0
+                    type: number
+            required:
+                - commerceAccountId
+                - currency
+                - externalReferenceCode
+                - siteId
+            type: object
+        body:
+            properties:
+                logo:
+                    format: binary
+                    type: string
+            type: object
+        body_1:
+            properties:
+                logo:
+                    format: binary
+                    type: string
+            type: object
+    securitySchemes:
+        BasicAuth:
+            scheme: basic
+            type: http
+        BearerAuth:
+            scheme: bearer
+            type: http
+        OAuth2:
+            flows:
+                authorizationCode:
+                    authorizationUrl: /oauth/authorize
+                    scopes:
+                        CommerceOpenApiAdmin.admin: Grants access to admin operations
+                        CommerceOpenApiAdmin.read: Grants read access
+                        CommerceOpenApiAdmin.write: Grants write access
+                    tokenUrl: /oauth/token
+            type: oauth2
+info:
+    contact:
+        email: team-commerce@liferay.com
+        name: Commerce Team
+    description: Liferay Commerce Admin Account API
+    license:
+        name: GNU Lesser General Public License 2.1
+        url: https://www.gnu.org/licenses/lgpl-2.1.html
+    title: Liferay Commerce Admin Account API
+    version: v1.0
+openapi: 3.0.0
+paths:
+    /account/:
+        post:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Account'
+                    application/xml:
+                        schema:
+                            $ref: '#/components/schemas/Account'
+                required: true
+            responses:
+                201:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Account'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Account'
+                    description: Created
+                202:
+                    description: Async
+                204:
+                    description: Updated
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Creates or updates an Account.
+            tags:
+                - Account
+    /accounts/:
+        get:
+            parameters:
+                - explode: true
+                  in: query
+                  name: page
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+                - explode: true
+                  in: query
+                  name: pageSize
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Account'
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Account'
+                                type: array
+                    description: Successful operation
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.read
+            summary: Gets a list of Accounts.
+            tags:
+                - Account
+    /accounts/by-externalReferenceCode/{externalReferenceCode}/address/:
+        post:
+            parameters:
+                - explode: false
+                  in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      description: The resource external reference code
+                      example: AB-34098-789-N
+                      minLength: 1
+                      type: string
+                  style: simple
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Address'
+                    application/xml:
+                        schema:
+                            $ref: '#/components/schemas/Address'
+                required: true
+            responses:
+                201:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                    description: Created
+                202:
+                    description: Async
+                204:
+                    description: Updated
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Creates an Address.
+            tags:
+                - Address
+    /accounts/by-externalReferenceCode/{externalReferenceCode}/addresses/:
+        get:
+            parameters:
+                - explode: false
+                  in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      description: The resource external reference code
+                      example: AB-34098-789-N
+                      minLength: 1
+                      type: string
+                  style: simple
+                - explode: true
+                  in: query
+                  name: page
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+                - explode: true
+                  in: query
+                  name: pageSize
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Address'
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Address'
+                                type: array
+                    description: Successful operation
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.read
+            summary: Gets a list of Addresses related to an Account.
+            tags:
+                - Address
+    /accounts/by-externalReferenceCode/{externalReferenceCode}/logo/:
+        post:
+            parameters:
+                - explode: false
+                  in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      description: The resource external reference code
+                      example: AB-34098-789-N
+                      minLength: 1
+                      type: string
+                  style: simple
+            requestBody:
+                content:
+                    multipart/form-data:
+                        schema:
+                            $ref: '#/components/schemas/body_1'
+                required: true
+            responses:
+                201:
+                    description: Created
+                202:
+                    description: Async
+                204:
+                    description: Updated
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Creates or updates an Account Logo.
+            tags:
+                - Account
+    /accounts/by-externalReferenceCode/{externalReferenceCode}/order/:
+        post:
+            parameters:
+                - explode: false
+                  in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      description: The resource external reference code
+                      example: AB-34098-789-N
+                      minLength: 1
+                      type: string
+                  style: simple
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Order'
+                    application/xml:
+                        schema:
+                            $ref: '#/components/schemas/Order'
+                required: true
+            responses:
+                201:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Order'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Order'
+                    description: Created
+                202:
+                    description: Accepted - Async
+                204:
+                    description: Updated
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Creates or updates a Order related to an Account.
+            tags:
+                - Order
+            x-liferay-context:
+                - language
+    /accounts/by-externalReferenceCode/{externalReferenceCode}/orders/:
+        get:
+            parameters:
+                - explode: false
+                  in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      description: The resource external reference code
+                      example: AB-34098-789-N
+                      minLength: 1
+                      type: string
+                  style: simple
+                - explode: true
+                  in: query
+                  name: page
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+                - explode: true
+                  in: query
+                  name: pageSize
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Order'
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Order'
+                                type: array
+                    description: Successful operation
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.read
+            summary: Gets the List of orders from a site related to an account
+            tags:
+                - Order
+            x-liferay-context:
+                - language
+    /accounts/by-externalReferenceCode/{externalReferenceCode}:
+        delete:
+            parameters:
+                - explode: false
+                  in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      description: The resource external reference code
+                      example: AB-34098-789-N
+                      minLength: 1
+                      type: string
+                  style: simple
+            responses:
+                204:
+                    description: No content
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Deletes an Account by external reference code.
+            tags:
+                - Account
+        get:
+            parameters:
+                - explode: false
+                  in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      description: The resource external reference code
+                      example: AB-34098-789-N
+                      minLength: 1
+                      type: string
+                  style: simple
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Account'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Account'
+                    description: Successful operation
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.read
+            summary: Gets an Account by external reference code.
+            tags:
+                - Account
+        patch:
+            parameters:
+                - explode: false
+                  in: path
+                  name: externalReferenceCode
+                  required: true
+                  schema:
+                      description: The resource external reference code
+                      example: AB-34098-789-N
+                      minLength: 1
+                      type: string
+                  style: simple
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Account'
+                    application/xml:
+                        schema:
+                            $ref: '#/components/schemas/Account'
+                required: true
+            responses:
+                201:
+                    description: Created
+                202:
+                    description: Async
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Updates an Account by external reference code.
+            tags:
+                - Account
+    /accounts/{id}/address/:
+        post:
+            parameters:
+                - explode: false
+                  in: path
+                  name: id
+                  required: true
+                  schema:
+                      description: The resource Id
+                      example: 30130
+                      format: int64
+                      minimum: 0
+                      type: integer
+                  style: simple
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Address'
+                    application/xml:
+                        schema:
+                            $ref: '#/components/schemas/Address'
+                required: true
+            responses:
+                201:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Address'
+                    description: Created
+                202:
+                    description: Async
+                204:
+                    description: Updated
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Creates an Address.
+            tags:
+                - Address
+    /accounts/{id}/addresses/:
+        get:
+            parameters:
+                - explode: false
+                  in: path
+                  name: id
+                  required: true
+                  schema:
+                      description: The resource Id
+                      example: 30130
+                      format: int64
+                      minimum: 0
+                      type: integer
+                  style: simple
+                - explode: true
+                  in: query
+                  name: page
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+                - explode: true
+                  in: query
+                  name: pageSize
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Address'
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Address'
+                                type: array
+                    description: Successful operation
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.read
+            summary: Gets a list of Addresses related to an Account.
+            tags:
+                - Address
+    /accounts/{id}/logo/:
+        post:
+            parameters:
+                - explode: false
+                  in: path
+                  name: id
+                  required: true
+                  schema:
+                      description: The resource Id
+                      example: 30130
+                      format: int64
+                      minimum: 0
+                      type: integer
+                  style: simple
+            requestBody:
+                content:
+                    multipart/form-data:
+                        schema:
+                            $ref: '#/components/schemas/body'
+                required: true
+            responses:
+                201:
+                    description: Created
+                202:
+                    description: Async
+                204:
+                    description: Updated
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Creates or updates an Account Logo.
+            tags:
+                - Account
+    /accounts/{id}/order/:
+        post:
+            parameters:
+                - explode: false
+                  in: path
+                  name: id
+                  required: true
+                  schema:
+                      description: The resource Id
+                      example: 30130
+                      format: int64
+                      minimum: 0
+                      type: integer
+                  style: simple
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Order'
+                    application/xml:
+                        schema:
+                            $ref: '#/components/schemas/Order'
+                required: true
+            responses:
+                201:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Order'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Order'
+                    description: Created
+                202:
+                    description: Accepted - Async
+                204:
+                    description: Updated
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Creates or updates a Order related to an Account.
+            tags:
+                - Order
+            x-liferay-context:
+                - language
+    /accounts/{id}/orders/:
+        get:
+            parameters:
+                - explode: false
+                  in: path
+                  name: id
+                  required: true
+                  schema:
+                      description: The resource Id
+                      example: 30130
+                      format: int64
+                      minimum: 0
+                      type: integer
+                  style: simple
+                - explode: true
+                  in: query
+                  name: page
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+                - explode: true
+                  in: query
+                  name: pageSize
+                  required: false
+                  schema:
+                      type: integer
+                  style: form
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Order'
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: '#/components/schemas/Order'
+                                type: array
+                    description: Successful operation
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.read
+            summary: Gets the List of orders from a site related to an account
+            tags:
+                - Order
+            x-liferay-context:
+                - language
+    /accounts/{id}:
+        delete:
+            parameters:
+                - explode: false
+                  in: path
+                  name: id
+                  required: true
+                  schema:
+                      description: The resource Id
+                      example: 30130
+                      format: int64
+                      minimum: 0
+                      type: integer
+                  style: simple
+            responses:
+                204:
+                    description: No content
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Deletes an Account by ID.
+            tags:
+                - Account
+        get:
+            parameters:
+                - explode: false
+                  in: path
+                  name: id
+                  required: true
+                  schema:
+                      description: The resource Id
+                      example: 30130
+                      format: int64
+                      minimum: 0
+                      type: integer
+                  style: simple
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Account'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Account'
+                    description: Successful operation
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.read
+            summary: Gets an Account by ID.
+            tags:
+                - Account
+        patch:
+            parameters:
+                - explode: false
+                  in: path
+                  name: id
+                  required: true
+                  schema:
+                      description: The resource Id
+                      example: 30130
+                      format: int64
+                      minimum: 0
+                      type: integer
+                  style: simple
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Account'
+                    application/xml:
+                        schema:
+                            $ref: '#/components/schemas/Account'
+                required: true
+            responses:
+                201:
+                    description: Created
+                202:
+                    description: Async
+                400:
+                    description: Invalid input
+                401:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Authentication information is missing or invalid
+                404:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: The specified resource was not found
+                500:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                        application/xml:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                    description: Unexpected error
+            security:
+                - BasicAuth: []
+                - BearerAuth: []
+                - OAuth2:
+                      - CommerceOpenApiAdmin.write
+            summary: Updates an Account by ID.
+            tags:
+                - Account
+servers:
+    - description: Liferay Commerce API server
+      url: https://commerce.{environment}.liferay.com/commerce-admin/{basePath}
+      variables:
+          basePath:
+              default: v1.0
+          environment:
+              default: api
+              enum:
+                  - api
+                  - api.dev
+                  - api.uat
+    - description: Liferay Commerce Local Development (Hosts file)
+      url: '{protocol}://{host}:{port}/o/commerce-admin/{basePath}'
+      variables:
+          basePath:
+              default: v2.0
+          host:
+              default: test.dev
+          port:
+              default: "8080"
+              enum:
+                  - "443"
+                  - "8080"
+                  - "8443"
+          protocol:
+              default: http
+              enum:
+                  - http
+                  - https
+    - description: Liferay Commerce Local Development with Ngrok
+      url: '{protocol}://{host}.ngrok.io/o/commerce-admin/{basePath}'
+      variables:
+          basePath:
+              default: v1.0
+          host:
+              default: commerce
+          protocol:
+              default: http
+              enum:
+                  - http
+                  - https
+    - description: SwaggerHub API Auto Mocking
+      url: https://virtserver.swaggerhub.com/liferay6/commerce-admin-account/v1.0
+    - description: SwaggerHub API Auto Mocking
+      url: https://virtserver.swaggerhub.com/liferayinc/commerce-admin-account/v1.0

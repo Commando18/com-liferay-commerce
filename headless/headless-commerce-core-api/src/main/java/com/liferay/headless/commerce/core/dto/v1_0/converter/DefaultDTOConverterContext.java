@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.headless.commerce.admin.catalog.dto.v1_0.converter;
+package com.liferay.headless.commerce.core.dto.v1_0.converter;
 
 import java.util.Locale;
 import java.util.Optional;

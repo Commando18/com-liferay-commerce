@@ -12,22 +12,26 @@
  * details.
  */
 
-package com.liferay.headless.commerce.admin.catalog.dto.v1_0.converter;
+package com.liferay.headless.commerce.admin.account.internal.jaxrs.application;
 
-import java.util.Locale;
-import java.util.Optional;
+import javax.annotation.Generated;
 
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.Application;
+
+import org.osgi.service.component.annotations.Component;
 
 /**
  * @author Alessio Antonio Rendina
+ * @generated
  */
-public interface DTOConverterContext {
-
-	public Locale getLocale();
-
-	public long getResourcePrimKey();
-
-	public Optional<UriInfo> getUriInfoOptional();
-
+@Component(
+	property = {
+		"osgi.jaxrs.application.base=/headless-commerce-admin-account",
+		"osgi.jaxrs.extension.select=(osgi.jaxrs.name=Liferay.Vulcan)",
+		"osgi.jaxrs.name=Liferay.Headless.Commerce.Admin.Account"
+	},
+	service = Application.class
+)
+@Generated("")
+public class HeadlessCommerceAdminAccountApplication extends Application {
 }
