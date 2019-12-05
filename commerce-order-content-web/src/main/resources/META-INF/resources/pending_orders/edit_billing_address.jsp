@@ -20,6 +20,7 @@
 CommerceOrderContentDisplayContext commerceOrderContentDisplayContext = (CommerceOrderContentDisplayContext)request.getAttribute(WebKeys.PORTLET_DISPLAY_CONTEXT);
 
 CommerceOrder commerceOrder = commerceOrderContentDisplayContext.getCommerceOrder();
+
 CommerceAddress commerceAddress = commerceOrder.getBillingAddress();
 
 long commerceCountryId = BeanParamUtil.getLong(commerceAddress, request, "commerceCountryId", 0);

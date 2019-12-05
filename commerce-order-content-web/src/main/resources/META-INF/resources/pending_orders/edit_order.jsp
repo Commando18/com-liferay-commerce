@@ -364,7 +364,6 @@ List<CommerceOrderValidatorResult> commerceOrderValidatorResults = new ArrayList
 	);
 </aui:script>
 
-
 <%@ include file="/pending_orders/transition.jspf" %>
 
 <aui:script use="aui-base">
