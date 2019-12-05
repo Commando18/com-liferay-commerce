@@ -546,6 +546,12 @@ public interface CommerceOrderLocalService
 			long commerceOrderId, ServiceContext serviceContext)
 		throws PortalException;
 
+	public CommerceOrder updateDiscountAmounts(
+			long commerceOrderId, BigDecimal subtotalDiscountAmount,
+			BigDecimal totalDiscountAmount, BigDecimal shippingDiscountAmount,
+			CommerceContext commerceContext)
+		throws PortalException;
+
 	@Indexable(type = IndexableType.REINDEX)
 	public CommerceOrder updateInfo(
 			long commerceOrderId, String printedNote,
